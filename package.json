@@ -1,0 +1,15 @@
+{
+  "name": "sellers",
+  "version": "1.0.0",
+  "description": "Project to manage an store, in this project, you will create an store and will manipulate the objects of this store ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^4.1.4"
+  }
+}
