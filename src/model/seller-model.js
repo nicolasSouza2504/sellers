@@ -1,10 +1,4 @@
-class Seller {
+const sellerSchema = require("../schema/seller-schema");
+const mongoose = require("mongoose");
 
-    constructor(name, cnpj) {
-        this.name = name;
-        this.cnpj = cnpj;
-    }
-
-}
-
-module.exports = Seller;
+module.exports = mongoose.model("Seller", sellerSchema);

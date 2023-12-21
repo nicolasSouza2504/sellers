@@ -3,31 +3,29 @@ const Seller = require('../model/seller-model');
 
 class SellerController {
 
-    async createSeller(jsonSeller) {
+    async createSeller(seller) {
 
-        await mongoClient.connect().then(async () => {
+        return await mongoClient.connect()
+            .then(async () => {
 
-            const collection = mongoClient.getDb().collection('seller');
+                seller = new Seller(seller);
 
-            const seller = new Seller('Nicolas', 66666666);
+                return await seller.save()
+                    .then(this.onSuccessSaveSeller)
+                    .catch(this.onErrorSaveSeller);
 
-            const result = await collection.insertOne(seller)
-                .then((result) => {
-                    console.log('Document inserted successfully' + result);
-                }).catch((err) => {
-                    console.error('Error inserting document:', err);
-                });
-
-        }).catch(err => {
-            console.log(err);
-        }).finally(() => {
-
-            return 'Seller created successfully';
-
-        });
+            })
+            .catch(this.onErrorSaveSeller);
 
     }
 
+    onSuccessSaveSeller() {
+        return {message: 'Seller created successfully'};
+    }
+
+    onErrorSaveSeller(err) {
+        throw new Error("Error inserting document " + err.message);
+    }
 }
 
 module.exports = new SellerController();

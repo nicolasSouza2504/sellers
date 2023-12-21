@@ -1,5 +1,6 @@
 Esta aplicação fara um controle de uma loja de um lojista .
 
-Para isso se fará necessário o cadastro desse lojista com chaves de login nas apis, para fim de consulta de estoque, cadastro e consumo de produtos.
+Para isso se fará necessário o cadastro desse lojista com chaves de login nas apis,
+para fim de consulta de estoque, cadastro e consumo de produtos.
 
 Toda esta estrutura será pensada utilizando o conceite de banco de dados não relacional para fim de experiências com mongodb e nodejs;

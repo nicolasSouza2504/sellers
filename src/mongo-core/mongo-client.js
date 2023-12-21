@@ -1,24 +1,16 @@
 const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
 
 class Client {
 
-    url = "mongodb+srv://nicolas:new_db@cluster0.asivu13.mongodb.net/?retryWrites=true&w=majority";;
-    client = null;
+    url = "mongodb+srv://nicolas:new_db@cluster0.asivu13.mongodb.net/seller_db?retryWrites=true&w=majority";
 
     constructor() {
-        this.client = new MongoClient(this.url, { useUnifiedTopology: true });
+        return this;
     }
 
     connect() {
-        return this.client.connect();
-    }
-
-    close() {
-        return this.client.close();
-    }
-
-    getDb() {
-        return this.client.db('sellers');
+        return mongoose.connect(this.url, {useNewUrlParser: true, useUnifiedTopology: true});
     }
 
 }

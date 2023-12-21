@@ -2,15 +2,17 @@ const {Router} = require("express");
 const routes = new Router();
 const sellerController = require("../controller/seller.controller")
 
-routes.get("/ping", (req, res) => {
-    return res.status(200).json({message: 'pong'});
-});
-
 routes.post("/seller", async (req, res) => {
 
-    const msgresult = await sellerController.createSeller()
+    try {
 
-    return res.status(200).json('{\"message\": \"' + msgresult + '\"}');
+        let objResult = await sellerController.createSeller(req.body)
+
+        return res.status(200).json(objResult);
+
+    } catch (error) {
+        return res.status(500).json({error: error.message});
+    }
 
 });
 
