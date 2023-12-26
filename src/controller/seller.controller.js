@@ -50,6 +50,26 @@ class SellerController {
 
     }
 
+    async getSellerByApiKey(apiKey) {
+
+        return await mongoClient.connect()
+            .then(async (res) => {
+
+                return await Seller.findOne({apiKey: apiKey})
+                    .then((seller) => {
+                        return seller;
+                    })
+                    .catch((error) => {
+                        throw new Error(error.message);
+                    });
+
+            })
+            .catch((error) => {
+                throw new Error(error.message);
+            });
+
+    }
+
 }
 
 module.exports = new SellerController();

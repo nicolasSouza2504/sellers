@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 class Client {
 
-    url = "****************";
+    url = "mongodb+srv://nicolas:new_db@cluster0.asivu13.mongodb.net/seller_db?retryWrites=true&w=majority";
 
     constructor() {
         return this;
